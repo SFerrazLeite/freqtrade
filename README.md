@@ -8,11 +8,15 @@ Currently supported exchanges: bittrex, poloniex (partly implemented)
 This software is for educational purposes only.
 Don't risk money which you are afraid to lose.
 
+#### Telegram Set-Up
 The command interface is accessible via Telegram (not required).
-Just register a new bot on https://telegram.me/BotFather
-and enter the telegram `token` and your `chat_id` in `config.json`
-
-Persistence is achieved through sqlite.
+To set it up do:
+1. Register a new bot on https://telegram.me/BotFather and read the `token`
+2. Create a new Telegram group chat and invite the bot to the chat
+3. Send the message `/my_id @my_bot` to the bot (replace `@my_bot` with your actual bot name)
+4. Go to following url: `https://api.telegram.org/botXXX:YYYY/getUpdates` (replace XXX:YYYY with your bot token)
+5. Look for `"chat":{"id":-zzzzzzzzzz,` -- `-zzzzzzzzzz` is your chat id (with the negative sign).
+6. Enter the telegram `token` and your `chat_id` in `config.json`
 
 #### Telegram RPC commands:
 * /start: Starts the trader
@@ -21,6 +25,10 @@ Persistence is achieved through sqlite.
 * /profit: Lists cumulative profit from all finished trades
 * /forcesell <trade_id>: Instantly sells the given trade (Ignoring `minimum_roi`).
 * /performance: Show performance of each finished trade grouped by pair
+
+#### Persistance
+Currently, persistence is achieved through sqlite -- no set up required
+
 
 #### Config
 `minimal_roi` is a JSON object where the key is a duration
